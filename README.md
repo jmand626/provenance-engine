@@ -2,4 +2,4 @@ A genuine, localized text-alignment engine that combines analysis of text with t
 
 It analyzes how political framing around social justice issues mutates over time, track the evolution of specific debate tactics, or identify when state legislatures are using copy-pasted bill text from lobbying groups.
 
-The end goal is a living history of politcal rhetoric, ideally updating daily, showing an origin and spread of our political languange. Hence, Provenance.
+The end goal is a living history of political rhetoric, ideally updating daily, showing an origin and spread of our political language. Hence, Provenance.
