@@ -7,7 +7,7 @@
 
 ## Setup & Execution Commands
 - **Docker:** `docker-compose up -d` (Starts PostgreSQL and Elasticsearch)
-- **Backend (Java):** `cd backend && ./mvnw spring-boot:run`
+- **Backend (Java):** `cd backend && mvn spring-boot:run`
 - **Pipeline (Python):** `cd data-pipeline && python main.py`
 - **Frontend (Node):** `cd frontend && npm run dev`
 

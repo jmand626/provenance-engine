@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: provenance-engine-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/provenance
+    username: provenance
+    password: provenance
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
