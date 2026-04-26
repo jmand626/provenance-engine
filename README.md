@@ -127,3 +127,5 @@ The `frontend` directory is reserved for the web viewer. The project has not bee
 - Core NLP alignment, scraping, and API domain logic are intentionally not implemented in this scaffold.
 - Elasticsearch security and HTTPS are disabled for local development only.
 - The Docker volumes `postgres-data` and `elasticsearch-data` persist local state between restarts.
+
+The actual pieces will be filled in future commits
