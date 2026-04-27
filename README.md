@@ -70,7 +70,7 @@ cd data-pipeline
 python -m venv .venv
 ```
 
-IF you use Git Bash on windows, like me, its this:
+If you use Git Bash on windows, like me, its this:
 
 ```Git Bash on Windows
 source .venv/Scripts/activate
