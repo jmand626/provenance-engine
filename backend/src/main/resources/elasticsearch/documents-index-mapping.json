@@ -1,0 +1,114 @@
+{
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "html_strip_filter": {
+          "type": "html_strip"
+        }
+      },
+      "filter": {
+        "legislative_shingles": {
+          "type": "shingle",
+          "min_shingle_size": 3,
+          "max_shingle_size": 8,
+          "output_unigrams": true
+        },
+        "legislative_ngrams": {
+          "type": "ngram",
+          "min_gram": 3,
+          "max_gram": 5
+        }
+      },
+      "analyzer": {
+        "legislative_text": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip_filter"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "legislative_shingles"
+          ]
+        },
+        "legislative_ngram": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip_filter"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "legislative_ngrams"
+          ]
+        },
+        "legislative_search": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip_filter"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "postgres_id": {
+        "type": "keyword"
+      },
+      "document_type": {
+        "type": "keyword"
+      },
+      "organization_id": {
+        "type": "keyword"
+      },
+      "state_code": {
+        "type": "keyword"
+      },
+      "session": {
+        "type": "keyword"
+      },
+      "bill_identifier": {
+        "type": "keyword"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "legislative_search",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 512
+          }
+        }
+      },
+      "full_text": {
+        "type": "text",
+        "analyzer": "legislative_text",
+        "search_analyzer": "legislative_search",
+        "term_vector": "with_positions_offsets",
+        "fields": {
+          "ngram": {
+            "type": "text",
+            "analyzer": "legislative_ngram",
+            "search_analyzer": "legislative_search"
+          }
+        }
+      },
+      "source_url": {
+        "type": "keyword",
+        "ignore_above": 2048
+      },
+      "indexed_at": {
+        "type": "date"
+      }
+    }
+  }
+}
