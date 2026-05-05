@@ -82,6 +82,11 @@ def ensure_alec_organization(conn: PgConnection) -> str:
             (ALEC_NAME, ALEC_IDEOLOGY, ALEC_TYPE, "https://alec.org/"),
         )
         inserted = cursor.fetchone()
+
+        if inserted is None:
+            # extra special check to ensure database does not hit soft fail on insert
+            raise RuntimeError("Failed to insert ALEC organization row")
+        
         conn.commit()
         LOGGER.info("Inserted organization row for ALEC")
         return str(inserted["id"])
@@ -169,7 +174,7 @@ def discover_policy_urls(
 
         for anchor in soup.find_all("a", href=True):
             href = anchor.get("href")
-            if not href:
+            if not isinstance(href, str):
                 continue
 
             absolute_url = normalize_url(urljoin(current_url, href))
