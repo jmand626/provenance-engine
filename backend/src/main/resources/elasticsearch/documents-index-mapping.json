@@ -1,5 +1,9 @@
 {
   "settings": {
+    "index": {
+      "max_ngram_diff": 2,
+      "max_shingle_diff": 6
+    },
     "analysis": {
       "char_filter": {
         "html_strip_filter": {
